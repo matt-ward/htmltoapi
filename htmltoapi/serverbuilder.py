@@ -23,7 +23,7 @@ app = Flask(__name__)
         for resource in self.config['resources']:
 
             f.write("""
-@app.route("/api/"""+resource['name']+"""")
+@app.route("/api/"""+resource['name'].lower()+"""s")
 def z"""+str(uuid.uuid4()).replace('-', '')+"""():
     config = """+str(resource)+"""
     page = pagerequester.Requester(\""""+resource['source_url']+"""\").fetch_page_as_text()
