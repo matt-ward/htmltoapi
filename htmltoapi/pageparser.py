@@ -1,10 +1,16 @@
 from bs4 import BeautifulSoup
+import logging
+
+
+logging.basicConfig()
+logger = logging.getLogger('pageparser')
+
 
 class Parser:
 
-    def __init__(self, config, page):
+    def __init__(self, resource_config, page):
 
-        self.config = config
+        self.config = resource_config
         self.page = page
 
     def parse(self):
@@ -30,7 +36,10 @@ class Parser:
 
             element_answers.append(answers)
 
-        return Parser.__make_collections(element_answers)
+        data = Parser.__make_collections(element_answers)
+
+        return {"name": self.config.get('name'), "data": data}
+
 
     @staticmethod
     def __make_collections(element_answers):

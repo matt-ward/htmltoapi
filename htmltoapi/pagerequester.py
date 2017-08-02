@@ -1,9 +1,6 @@
 import requests
-from requests import RequestException
-import json
 import logging
-from bs4 import BeautifulSoup
-import traceback
+
 
 logging.basicConfig()
 logger = logging.getLogger('pagerequester')
